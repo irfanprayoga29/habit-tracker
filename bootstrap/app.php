@@ -16,12 +16,3 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
-
-/**
- * Override storage path for Vercel serverless environment
- */
-if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL'])) {
-    $app->useStoragePath('/tmp/storage');
-}
-
-return $app;
