@@ -38,7 +38,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php -r \"$f='vendor/laravel/framework/config/database.php';if(file_exists($f)){file_put_contents($f,str_replace('PDO::MYSQL_ATTR_SSL_CA','1012',file_get_contents($f)));}\""
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
