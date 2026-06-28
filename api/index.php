@@ -3,7 +3,9 @@
 /**
  * Create writable storage directories in /tmp for Vercel
  */
-if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL'])) {
+define('IS_VERCEL', true);
+
+if (defined('IS_VERCEL')) {
     $dirs = [
         '/tmp/storage/app',
         '/tmp/storage/framework/cache/data',
