@@ -17,7 +17,14 @@ class AuthController extends Controller
     public function callback()
     {
         try {
-            $userdata = Socialite::driver('google')->user();
+            $driver = Socialite::driver('google');
+            
+            // Hanya matikan verifikasi SSL saat di lokal (untuk menghindari error cURL 60)
+            if (app()->environment('local')) {
+                $driver->setHttpClient(new \GuzzleHttp\Client(['verify' => false]));
+            }
+            
+            $userdata = $driver->user();
 
             $user = User::where('email', $userdata->email)->first();
             if (!$user) {
@@ -29,10 +36,14 @@ class AuthController extends Controller
             }
 
             Auth::login($user);
-            return redirect()->route('landing-page');
+            return redirect()->route('tracker');
 
         } catch (\Exception $e) {
-            return redirect()->route('landing-page');
+            // Tampilkan error detail hanya di environment lokal
+            if (app()->environment('local')) {
+                dd($e->getMessage());
+            }
+            return redirect()->route('landing-page')->with('error', 'Login failed. Please try again.');
         }
     }
 }

@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', LandingPage::class)->name('landing-page');
 Route::get('/tracker', HabitTracker::class)->name('tracker');
 
-Route::get('/google/callback', [AuthController::class, 'callback'])->name('google.callback');
-Route::get('/google/redirect', [AuthController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [AuthController::class, 'callback'])->name('google.callback');
+Route::get('/auth/google/redirect', [AuthController::class, 'redirect'])->name('google.redirect');
