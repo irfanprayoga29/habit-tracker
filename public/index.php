@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+ini_set('display_errors', '0');
+
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...
