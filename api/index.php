@@ -26,6 +26,7 @@ if (defined('IS_VERCEL')) {
     $_SERVER['APP_CONFIG_CACHE'] = '/tmp/bootstrap/cache/config.php';
     $_SERVER['APP_ROUTES_CACHE'] = '/tmp/bootstrap/cache/routes-v7.php';
     $_SERVER['APP_EVENTS_CACHE'] = '/tmp/bootstrap/cache/events.php';
+    $_SERVER['VIEW_COMPILED_PATH'] = '/tmp/storage/framework/views';
 }
 
 /**
