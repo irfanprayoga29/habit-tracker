@@ -2,7 +2,7 @@
 
 // Suppress deprecation warnings on Vercel PHP 8.4+
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
-ini_set('display_errors', '0');
+ini_set('display_errors', '1'); // TEMPORARILY ON FOR DEBUGGING
 
 /**
  * Create writable storage directories in /tmp for Vercel
